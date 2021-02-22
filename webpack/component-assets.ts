@@ -1,44 +1,32 @@
-import path from 'path'
+import merge from 'webpack-merge'
 import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import base from './component-base'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 // -- Paths
-const ENTRY_FILE_PATH = './src/client/main.tsx'
-const INDEX_HTML_FILE_PATH = './src/client/index.html'
-const OUTPUT_DIR = './build/client'
-
-// -- Helpful functions
-const fileNameTemplate = (ext: string) => (isProduction
-  ? `[name].[chunkhash].min.${ext}`
-  : `[name].${ext}`)
+const ENTRY_FILE_PATH = './src/client/assets/scss/component/component.scss'
 
 const fileLoaderFileNameTemplate = () => (isProduction
   ? 'content/[name].[hash].[ext]'
   : 'content/[name].[ext]')
 
-// -- Config
-export const config: webpack.Configuration = {
+export const config: webpack.Configuration = merge(base, {
   entry: [ENTRY_FILE_PATH],
-  output: {
-    path: path.resolve(OUTPUT_DIR),
-    filename: fileNameTemplate('js'),
-    publicPath: '/',
-  },
-  resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts', '.css', '.scss'] },
+  resolve: { extensions: ['.scss'] },
   plugins: [
-    new HtmlWebpackPlugin({ template: INDEX_HTML_FILE_PATH }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorOptions: {
+        safe: true,
+        discardComments: { removeAll: true },
+      },
+    }),
     new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [
-      {
-        test: /\.(jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
       {
         test: /\.(css)/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -69,6 +57,6 @@ export const config: webpack.Configuration = {
       },
     ],
   },
-}
+})
 
 export default config

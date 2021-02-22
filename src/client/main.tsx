@@ -1,14 +1,8 @@
-/* eslint react/jsx-filename-extension: 0 */
-
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import App from './components/app'
-import store from './store'
+import App from './app/app'
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('root'),
 )

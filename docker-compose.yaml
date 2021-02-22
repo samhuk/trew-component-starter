@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  trew-starter:
-    container_name: trew-starter
+  trew-component-starter:
+    container_name: trew-component-starter
     environment:
       - NODE_ENV=production
       - SERVER_PORT=4001
     build:
       context: "."
-    image: trew-starter:local
+    image: trew-component-starter:local
     ports:
       - 4001:4001

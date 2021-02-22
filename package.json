@@ -1,9 +1,9 @@
 {
-  "name": "trew-starter",
+  "name": "trew-component-starter",
   "version": "1.0.0",
   "description": "Typescript-React-ExpressJS-Webpack website starter",
   "scripts": {
-    "clean": "rimraf ./build && rimraf ./webpack/base.js && rimraf ./webpack/prod.js",
+    "clean": "rimraf ./build && rimraf ./webpack/*.js",
     "lint": "eslint --ext .ts,.tsx src/",
     "lint-fix": "eslint --ext .ts,.tsx src/ --fix",
     "test-unit": "jest --config ./src/test/unit/jest.config.ts",
@@ -15,16 +15,20 @@
     "start": "npm run clean && env-cmd -e dev nodemon --ext \"ts,json\" --ignore ./src/client --ignore ./src/test --exec \"npx ts-node --project ./tsconfig/dev.json ./src/server/app.ts\"",
     "watch-all": "concurrently -c blue,green -n \"build,test \" \"npm run start\" \"npm run watch-test-unit\"",
     "build-server": "rimraf ./build/src && env-cmd -e prod tsc -p ./tsconfig/serverProd.json",
-    "build-webpack-prod-config": "rimraf ./webpack/base.js && rimraf ./webpack/prod.js && env-cmd -e prod tsc -p ./tsconfig/webpackProd.json",
-    "build-client": "rimraf ./webpack/base.js && rimraf ./webpack/prod.js && rimraf ./build/client && npm run build-webpack-prod-config && env-cmd -e prod webpack --progress --config ./webpack/prod.js",
+    "build-webpack-config": "rimraf ./webpack/*.js && env-cmd -e prod tsc -p ./tsconfig/webpack.json",
+    "build-client": "rimraf ./webpack/*.js && rimraf ./build/client && npm run build-webpack-config && env-cmd -e prod webpack --progress --config ./webpack/prod.js",
     "build": "npm run build-server && npm run build-client",
     "start-prod": "env-cmd -e prod node ./build/src/server/app.js",
-    "build-docker": "docker build -t trew-starter:local .",
-    "start-docker": "docker-compose up -d"
+    "build-docker": "docker build -t trew-component-starter:local .",
+    "start-docker": "docker-compose up -d",
+    "build-component": "tsc -p ./tsconfig/component.json",
+    "bundle-component-ts": "env-cmd -e prod webpack --progress --config ./webpack/component-ts.js",
+    "bundle-component-assets": "env-cmd -e prod webpack --progress --config ./webpack/component-assets.js",
+    "bundle-component": "npm run build-webpack-config && npm run bundle-component-ts && npm run bundle-component-assets"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/samhuk/trew-starter"
+    "url": "https://github.com/samhuk/trew-component-starter"
   },
   "author": "samhuk",
   "license": "MIT",
@@ -40,6 +44,8 @@
     "cypress",
     "sass"
   ],
+  "main": "./lib/index.js",
+  "files": ["./lib"],
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@types/clone-deep": "^4.0.1",

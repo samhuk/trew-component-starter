@@ -3,3 +3,4 @@ build
 .DS_Store
 **/*webpack/*.js
 src/test/e2e/cypress/videos/**/*
+lib

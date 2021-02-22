@@ -1,7 +1,7 @@
-# 🚀 TREW Starter 
+# 🚀 TREW Component Starter
 
 ## Description
-A Typescript-React-Express-Webpack web application starter. This is suitable for a medium to large scale web app, containing most of what you will need, with the exception of deployment-specific aspects such as configuration for https, docker swarm, and so on.
+A Typescript-React-Express-Webpack web component starter. This is suitable for a medium to large scale web app, containing most of what you will need, with the exception of deployment-specific aspects such as configuration for https, docker swarm, and so on.
 
 Aspects:
 * **Typescript** for *all* files
@@ -14,7 +14,7 @@ Aspects:
 * **Cypress** for end-to-end testing
 * Development and production modes
 * Development mode has react and redux devtools extensions
-* An example model ("Order") to demonstrate the use of the other technologies
+* An example component ("Order") to demonstrate the use of the other technologies
 
 Current known limitations/exclusions:
 * Lack of a script to "set up" the starter
@@ -25,7 +25,7 @@ Current known limitations/exclusions:
 I found that the existing starters out there lacked one or more of the above listed aspects that I believe are necessary for a medium to large scale web application. I felt like it would be convenient if there was a starter that didn't compromise on detail.
 
 ## Setup
-Find all occurances of "trew-starter" and replace with your desired service name.
+Find all occurances of "trew-component-starter" and replace with your desired service name.
 
 ## Scripts
 

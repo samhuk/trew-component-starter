@@ -25,6 +25,7 @@
       }
     }
   },
+  "ignorePatterns": ["node_modules", "lib"],
   "plugins": [
     "react",
     "@typescript-eslint"

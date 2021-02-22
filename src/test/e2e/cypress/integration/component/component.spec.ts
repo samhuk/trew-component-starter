@@ -1,6 +1,6 @@
 describe('Orders', () => {
   it('Loads page', () => {
-    cy.visit('/orders')
+    cy.visit('/component')
     expect(true).to.equal(true)
   })
 })
