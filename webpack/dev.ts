@@ -9,7 +9,7 @@ export const config: webpack.Configuration = webpackMerge(base, {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: [
-    'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client?reload=true&overlay=true',
   ],
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
