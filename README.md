@@ -1,7 +1,7 @@
 # 🚀 TREW Component Starter
 
 ## Description
-A Typescript-React-Express-Webpack web component starter. This is suitable for a medium to large scale web app, containing most of what you will need, with the exception of deployment-specific aspects such as configuration for https, docker swarm, and so on.
+A Typescript-React-Express-Webpack web component package starter, allowing you to quickly start creating a react component package. This starter includes a web application that contains the component, meaning that it can be developed, tested, and demoed all in one place.
 
 Aspects:
 * **Typescript** for *all* files
@@ -33,10 +33,16 @@ Find all occurances of "trew-component-starter" and replace with your desired se
 * Ensure that the machine has **python** installed and is available on PATH. This is because of node-sass.
 * `npm install` for node packages.
 
-### Running
+### Running the web application ("demo site")
 * Development mode: `npm run start`
 * Production mode, non-docker: `npm run build && node ./build/src/server/app.js`
 * Production mode, docker: `npm run build-docker && npm run start-docker`
+
+### Building just the component package
+* Unbundled (most common usage): `npm run build-component`
+  * The built component js files will be outputted to ./lib
+* Bundled (i.e. minified main and vendor js, and css. Less common usage): `npm run bundle-component`
+  * The bundled component js and css files will be outputted to ./lib/bundle
 
 ### Testing
 * unit: `npm run test-unit`
@@ -45,9 +51,9 @@ Find all occurances of "trew-component-starter" and replace with your desired se
 * unit & e2e: `npm run test`
 * Please see the other scripts in the package.json file for the complete list.
 
-### Development watch script
-* The advised script to use while making changes is `npm run watch-all`. This concurrently starts the dev deployment and runs the unit tests, reloading both when changes occur.
+### Development
+* The advised script to use while making changes is `npm run watch-all`. This concurrently starts the dev deployment and runs the unit tests, reloading both whenever changes occur.
 
-### Advised IDE Extensions
+## Advised IDE Extensions
 
 ESLint
