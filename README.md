@@ -16,7 +16,6 @@ Aspects:
 * **Cypress** for end-to-end testing
 * Development and production modes
 * Development mode has react and redux devtools extensions
-* An example component ("Order") to demonstrate the use of the other technologies
 
 Current known limitations/exclusions:
 * Lack of a script to "set up" the starter
