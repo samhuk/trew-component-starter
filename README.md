@@ -3,6 +3,8 @@
 ## Description
 A Typescript-React-Express-Webpack web component package starter, allowing you to quickly start creating a react component package. This starter includes a web application that contains the component, meaning that it can be developed, tested, and demoed all in one place.
 
+This is based off of [TREW Starter](https://github.com/samhuk/trew-starter).
+
 Aspects:
 * **Typescript** for *all* files
 * **React** for UI
